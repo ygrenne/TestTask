@@ -25,6 +25,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Year</th>
+                        <th>Authors</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -34,6 +35,11 @@
                     <tr>
                         <td> {{ $book->name }} </td>
                         <td> {{ $book->year }} </td>
+                        <td>
+                            @foreach($book->authors as $author)
+                                {{ $author->first_name . ' ' . $author->last_name }} <br>
+                            @endforeach
+                        </td>
                         <td> <a href="{{ route('book.edit', ['id' => $book->id]) }}">Edit</a></td>
                         <td> <a href="{{ route('book.delete', ['id' => $book->id]) }}">Delete</a></td>
                     </tr>

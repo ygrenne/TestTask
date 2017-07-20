@@ -62,6 +62,7 @@ class AuthorController extends Controller
     {
         $author= Author::find($id);
 
+        $author->books()->detach();
         $author->delete();
 
         return redirect()->route('author.index');

@@ -13,6 +13,13 @@
                     <label for="year">Year</label>
                     <input type="number" max="{{ date('Y') }}" class="form-control" id="year" name="year" required="">
                 </div>
+                @foreach($authors as $author)
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="authors[]" value="{{ $author->id }}"> {{ $author->first_name .' '. $author->last_name }}
+                        </label>
+                    </div>
+                @endforeach
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

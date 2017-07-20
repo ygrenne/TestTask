@@ -11,6 +11,37 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts/master');
+Route::get('/', [
+    'uses' => 'BookController@getIndex',
+    'as' => 'book.index'
+]);
+
+
+
+Route::group(['prefix' => 'book'], function() {
+
+    Route::get('create', [
+        'uses' => 'BookController@getCreate',
+        'as' => 'book.create'
+    ]);
+
+    Route::post('create', [
+        'uses' => 'BookController@postCreate',
+        'as' => 'book.create'
+    ]);
+
+    Route::get('edit/{id}', [
+        'uses' => 'BookController@getEdit',
+        'as' => 'book.edit'
+    ]);
+
+    Route::post('edit', [
+        'uses' => 'BookController@postUpdate',
+        'as' => 'book.update'
+    ]);
+
+    Route::get('delete/{id}', [
+        'uses' => 'BookController@getDelete',
+        'as' => 'book.delete'
+    ]);
 });

@@ -20,7 +20,7 @@
                     </div>
                 </div>
             @endif
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -40,8 +40,8 @@
                                 {{ $author->first_name . ' ' . $author->last_name }} <br>
                             @endforeach
                         </td>
-                        <td> <a href="{{ route('book.edit', ['id' => $book->id]) }}">Edit</a></td>
-                        <td> <a href="{{ route('book.delete', ['id' => $book->id]) }}">Delete</a></td>
+                        <td class="action"> <a class="btn btn-primary" href="{{ route('book.edit', ['id' => $book->id]) }}">Edit</a></td>
+                        <td class="action"> <a class="btn btn-danger" href="{{ route('book.delete', ['id' => $book->id]) }}">Delete</a></td>
                     </tr>
                     @endforeach
                 </tbody>

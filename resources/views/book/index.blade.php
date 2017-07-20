@@ -3,7 +3,11 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>Books</h1>
+            <h1>
+                Books
+                <span class="pull-right"><a class="btn btn-info" href="{{ route('book.create') }}" >Add book</a></span>
+            </h1>
+
         </div>
     </div>
 

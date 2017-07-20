@@ -11,7 +11,7 @@
                 </div>
                 <div class="form-group">
                     <label for="year">Year</label>
-                    <input type="number" max="{{ date('Y') }}" id="year" name="year" value="{{ $book->year }}" required="">
+                    <input type="number" class="form-control" max="{{ date('Y') }}" id="year" name="year" value="{{ $book->year }}" required="">
                 </div>
                 {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{ $bookId }}">

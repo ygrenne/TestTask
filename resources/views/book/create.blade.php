@@ -1,16 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
+    @include('partials.errors')
     <div class="row">
         <div class="col-md-12">
             <form action="{{ route('book.create') }}" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" required="">
                 </div>
                 <div class="form-group">
                     <label for="year">Year</label>
-                    <input type="number" class="form-control" id="year" name="year">
+                    <input type="number" max="{{ date('Y') }}" class="form-control" id="year" name="year" required="">
                 </div>
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -20,6 +20,11 @@ class BookController extends Controller
 
     public function postCreate(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'year' => 'required|digits_between:1,4'
+        ]);
+
         $book = new Book([
             'name' => $request->input('name'),
             'year' => $request->input('year')
@@ -27,7 +32,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('info', 'Book '.$request->input('name').' created');
     }
 
     public function getEdit($id)
@@ -38,6 +43,11 @@ class BookController extends Controller
 
     public function postUpdate(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'year' => 'required|digits_between:1,4'
+        ]);
+
         $book = Book::find($request->input('id'));
 
         $book->name = $request->input('name');
@@ -45,7 +55,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('info', 'Book '.$request->input('name').' edited' );
     }
 
     public function getDelete($id)
@@ -54,7 +64,7 @@ class BookController extends Controller
 
         $book->delete();
 
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('info', 'Book deleted!');
     }
 
 }
